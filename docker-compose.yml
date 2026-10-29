@@ -1,0 +1,12 @@
+services:
+  scanner:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      WEBSEC_API_KEY: ${WEBSEC_API_KEY:-}
+    read_only: true
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
